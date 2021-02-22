@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Venga</string>
+    <string name="cero"></string>
+    <string name="login">LOGIN</string>
+    <string name="log">Login!</string>
+    <string name="sign_up">Sign-up!</string>
+    <string name="logout">LOGOUT</string>
+    <string name="contacto">Contacto</string>
+    <string name="chat">Chat</string>
+    <string name="atr_s">Atrás</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="security_answer">Security answer</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "728273849787",
+    "project_id": "p2e2-e8224",
+    "storage_bucket": "p2e2-e8224.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728273849787:android:8f1b6abefdc129fbe8c89e",
+        "android_client_info": {
+          "package_name": "com.example.venga"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728273849787-b9g645q7queb1kga38e81k57dro99co9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaHEa9EY7RFtQ9U8t4kfVRGTs_hqtZ_rg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728273849787-b9g645q7queb1kga38e81k57dro99co9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
