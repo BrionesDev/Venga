@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.firebase.ui.auth.AuthUI
-
 
 enum class ProviderType {
     BASIC
@@ -19,12 +19,18 @@ enum class ProviderType {
 class Contact : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private var correo: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact)
 
         auth = Firebase.auth
+
+        // Ejercicio 3. Mostrar email en esta pestaña
+        val currentUser = Firebase.auth.currentUser
+        val userMail = findViewById<TextView>(R.id.emailContact)
+        userMail.text = currentUser?.email!!.trim().substringBefore("@")
 
         findViewById<Button>(R.id.buttonContact).setOnClickListener() {
             val intent = Intent(this, Contact::class.java)

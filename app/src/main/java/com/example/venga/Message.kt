@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.content.Intent
+import android.widget.TextView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 /**
  * Message y autores de la aplicación
@@ -22,6 +25,11 @@ class Message : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message)
+
+        val currentUser = Firebase.auth.currentUser
+        val userMail = findViewById<TextView>(R.id.emailMessages)
+        userMail.text = currentUser?.email!!.trim().substringBefore("@")
+
         /**
          * Enlazamos cada botón hacia una actividad y la cerramos
          * @param go1 Cada botón 'go' lleva hacia un determinado chat

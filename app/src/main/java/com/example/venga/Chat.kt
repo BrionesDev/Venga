@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 /**
  * Chat y autores de la aplicación
@@ -22,6 +25,10 @@ class Chat : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        val currentUser = Firebase.auth.currentUser
+        val userMail = findViewById<TextView>(R.id.emailChat)
+        userMail.text = currentUser?.email!!.trim().substringBefore("@")
 
         /**
          * @param goBack Este botón se dirigirá de vuelta a la pantalla del listado de mensajes

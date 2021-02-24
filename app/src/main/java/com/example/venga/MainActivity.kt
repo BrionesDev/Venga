@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 //import com.google.firebase.quickstart.auth.R
@@ -30,7 +31,14 @@ class MainActivity : AppCompatActivity() {
      * @see Bundle
      */
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var bundle: Bundle //Declarar variable de la clase Bundle
+    private lateinit var auth: FirebaseAuth // Declarar variable de la clase FirebaeAuth
+    val db = Firebase.firestore // Declarar variable de la colección USERS
+
+    // Variables que contienen cada uno de los documentos de la colección
+    val docRefContacts = db.collection("users").document("contacts")
+    val docRefCredentials = db.collection("users").document("credentials")
+    val docRefMessages = db.collection("users").document("messages")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -42,11 +50,11 @@ class MainActivity : AppCompatActivity() {
          */
         auth = Firebase.auth
 
-        findViewById<Button>(R.id.signUpButton).setOnClickListener() {
-            val intent = Intent(this, Registry::class.java)
-            startActivity(intent)
-            this.finish()
-        }
+        //findViewById<Button>(R.id.signUpButton).setOnClickListener() {
+         //   val intent = Intent(this, Registry::class.java)
+          //  startActivity(intent)
+           // this.finish()
+      //  }
 
         //findViewById<Button>(R.id.loginButton).setOnClickListener() {
         //      val intent = Intent(this, Contact::class.java)
@@ -94,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //Lo mismo pero con registerButton
+        //Lo mismo pero con el botón de registro
         findViewById<Button>(R.id.signUpButton).setOnClickListener {
 
             if (hasData()) {
@@ -112,16 +120,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun showData(user: String, password : String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Datos")
-        builder.setMessage(user + " " + password)
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
+    //private fun showData(user: String, password : String) {
+        //val builder = AlertDialog.Builder(this)
+        //builder.setTitle("Datos")
+        //builder.setMessage(user + " " + password)
+        //builder.setPositiveButton("Aceptar", null)
+        //val dialog: AlertDialog = builder.create()
+      //  dialog.show()
+    //}
 
     private fun showAlert() {
         val builder = AlertDialog.Builder(this)
@@ -167,11 +173,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showContact(email: String, provider: ProviderType) {
-        val contactIntent = Intent(this, Contact::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-        }
-        startActivity(contactIntent)
+        val contactIntent = Intent(this, Contact::class.java)
+            contactIntent.putExtra("email", email)
+            contactIntent.putExtra("provider", provider.name)
+            startActivity(contactIntent)
     }
 
 }
